@@ -1,18 +1,24 @@
 # BGP convergence test plan using single DUT
 
 - [BGP convergence test plan using single DUT](#bgp-convergence-test-plan-using-single-dut)
-  - [Overview](#overview)
-    - [Scope](#scope)
-    - [Testbed](#testbed)
-  - [Topology](#topology)
-    - [SONiC switch as ToR](#sonic-switch-as-tor)
-    - [SONiC switch as Leaf](#sonic-switch-as-leaf)
-  - [Setup configuration](#setup-configuration)
-  - [Test Methodology](#test-methodology)
-  - [Test cases](#test-cases)
+  - [Overview](#Overview)
+    - [Scope](#Scope)
+    - [Testbed](#Testbed)
+  - [Topology](#Topology)
+    - [SONiC switch as ToR](#SONiC-switch-as-ToR)
+    - [SONiC switch as Leaf](#SONiC-switch-as-Leaf)
+  - [Setup configuration](#Setup-configuration)
+  - [Test methodology](#Test-methodology)
+  - [Test cases](#Test-cases)
     - [Test case # 1 – Convergence performance when remote link fails (route withdraw)](#test-case--1--convergence-performance-when-remote-link-fails-route-withdraw)
-      - [Test objective](#test-objective)
-      - [Test steps](#test-steps)
+      - [Test objective](#Test-objective)
+      - [Test steps](#Test-steps)
+      - [Test results](#Test-results)
+    - [Test case # 2 – RIB-IN Convergence](#Test-case--2--RIB-IN-Convergence)
+      - [Test objective](#Test-objective-1)
+      - [Test steps](#Test-steps-1)
+      - [Test results](#Test-results-1)
+    - [Call for action](#Call-for-action)
 
 ## Overview
 The purpose of these tests is to test the overall convergence of a data center network by simulating multiple newtork devices such as ToR/Leafs and using SONiC switch DUT as one of the ToR/Leaf, closely resembling production environment. The test assumes all necessary configurations are already pre-configured on the SONiC switch before test runs.
@@ -63,8 +69,34 @@ Measure the convergence time when remote link failure event happens with in the 
 * Simulate remote link failure by withdrawing the routes from one receiving port. 
 * Verify that the traffic is re-balanced and use the other available path to route the traffic.
 * Drill down by "Destination Endpoint" under traffic statistics to get the control plane to data plane convergence value.
+* In general the convergence value will fall in certain range. In order to achieve proper results, run the test multiple times and average out the test results. 
 * Set back default configuration.
 #### Test results
 ![Single remote link failure](Single_remote_link_failure.png)
+For above test case, below are the test results when multiple remote link fails.
+![Multiple remote link failure](Multiple_remote_link_failure.png)
 
-
+### Test case # 2 – RIB-IN Convergence 
+#### Test objective
+Measure the convergence time to install the routes in its RIB and then in its FIB to forward the packets after the routes are advertised.
+#### Test steps
+* Configure IPv4 EBGP sessions between Keysight ports and the SONiC switch using IxNetwork web UI.
+* Configure IPv4 routes via configured IPv4 BGP sessions. Initially disable the routes so that they don't get advertised after starting the protocols.
+* Configure the same IPv4 routes from both the Keysight receiving ports.
+* Configure another IPv4 session to send the traffic. This is the server port from which traffic will be sent to the VIP addresses.
+* Start all protocols and verify that IPv4 BGP neighborship is established.
+* Create a data traffic between the server port and receiver ports where the same VIP addresses are configured and enable tracking by "Destination Endpoint" and by "Destination session description".
+* Set the desired threshold value for receiving traffic. By default it will be set to 95% of expected receiving rate.
+* Apply and start the data traffic.
+* Verify that no traffic is being forwarded. 
+* Enable/advertise the routes which are already configured. 
+* Control plane event timestamp will be noted down and once the receiving traffic rate goes above the configured threshold value, it will note down the data plane threshold timestamp.
+* The difference between these two event timestamp will provide us with the RIB-IN convergence time.
+* In general the convergence value will fall in certain range. In order to achieve proper results, run the test multiple times and average out the test results. 
+* Set back default configuration.
+#### Test results
+![RIB-IN Convergence](RIB-IN_Convergence.png)
+In order to measure RIB-IN capacity of the switch, we can follow the same test methodology as RIB-IN convergence test.Below are the results for RIB-IN capacity test.
+![RIB-IN Capacity Test](RIB-IN_Capacity_Test.png)
+### Call for action
+* Solicitate experience in multi-DUT system test scenarios.
