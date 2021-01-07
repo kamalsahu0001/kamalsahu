@@ -73,7 +73,9 @@ Measure the convergence time when remote link failure event happens with in the 
 * Set back default configuration.
 #### Test results
 ![Single remote link failure](Single_remote_link_failure.png)
+
 For above test case, below are the test results when multiple remote link fails.
+
 ![Multiple remote link failure](Multiple_remote_link_failure.png)
 
 ### Test case # 2 – RIB-IN Convergence 
