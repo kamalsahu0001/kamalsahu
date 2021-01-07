@@ -65,6 +65,6 @@ Measure the convergence time when remote link failure event happens with in the 
 * Drill down by "Destination Endpoint" under traffic statistics to get the control plane to data plane convergence value.
 * Set back default configuration.
 #### Test results
-![Single remote link failure](Single remote link failure.PNG)
+![Single remote link failure](Single_remote_link_failure.png)
 
 
