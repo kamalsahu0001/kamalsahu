@@ -70,7 +70,7 @@ Measure the convergence time when remote link failure event happens with in the 
 * Verify that the traffic is re-balanced and use the other available path to route the traffic.
 * Drill down by "Destination Endpoint" under traffic statistics to get the control plane to data plane convergence value.
 * In general the convergence value will fall in certain range. In order to achieve proper results, run the test multiple times and average out the test results. 
-* Set back default configuration.
+* Set it back to default configuration.
 #### Test results
 ![Single remote link failure](Single_remote_link_failure.png)
 
@@ -95,7 +95,7 @@ Measure the convergence time to install the routes in its RIB and then in its FI
 * Control plane event timestamp will be noted down and once the receiving traffic rate goes above the configured threshold value, it will note down the data plane threshold timestamp.
 * The difference between these two event timestamp will provide us with the RIB-IN convergence time.
 * In general the convergence value will fall in certain range. In order to achieve proper results, run the test multiple times and average out the test results. 
-* Set back default configuration.
+* Set it back to default configuration.
 #### Test results
 ![RIB-IN Convergence](RIB-IN_Convergence.png)
 
