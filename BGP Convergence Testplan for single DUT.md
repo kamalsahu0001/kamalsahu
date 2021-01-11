@@ -21,14 +21,16 @@
     - [Call for action](#Call-for-action)
 
 ## Overview
-The purpose of these tests is to test the overall convergence of a data center network by simulating multiple newtork devices such as ToR/Leafs and using SONiC switch DUT as one of the ToR/Leaf, closely resembling production environment. The test assumes all necessary configurations are already pre-configured on the SONiC switch before test runs.
+The purpose of these tests is to test the overall convergence of a data center network by simulating multiple newtork devices such as ToR/Leafs and using SONiC switch DUT as one of the ToR/Leaf, closely resembling production environment.
 
 ### Scope
 These tests are targeted on fully functioning SONiC system. The purpose of these tests are to measure convergence when some unexpected failures such as remote link failure, local link failure, node failure or link faults etc occur and some expected failures such as maintenance or upgrade of devices occur in the SONiC system.
 
-### Testbed
+### Keysight Testbed
 The tests will run on following testbeds:
-* t0, t1
+* t0
+
+![Single DUT Topology ](Single_DUT_Topology.png)
 
 ## Topology
 ### SONiC switch as ToR
@@ -43,13 +45,13 @@ The tests will run on following testbeds:
 IPv4 EBGP neighborship will be configured between SONiC DUT and directly connected keysight ports. Keysight ports inturn will simulate the ToR's and Leafs by advertising IPv4/IPv6 routes.
 
 ## Test Methodology
-RFC 7747 test methodologies will be used for measuring convergence. 
-* Keysight IxNetwork web tool will be used to configure ebgp peering between keysight ports and SONiC DUT by advertising IPv4/IPv6 routes. 
-* Keysight ports will be advertising the same VIP(virtual IP) addresses. 
+Following test methodologies will be used for measuring convergence. 
+* Traffic generator will be used to configure ebgp peering between chassis ports and SONiC DUT by advertising IPv4/IPv6 routes. 
+* Chassis ports will be advertising the same VIP(virtual IP) addresses. 
 * Data traffic will be sent from  server to these VIP addresses. 
-* Depending on the test case, the faults will be generated. Local link failures can be simulated on keysight port by "simulating link down" event. 
+* Depending on the test case, the faults will be generated. Local link failures can be simulated on chassis port by "simulating link down" event. 
 * Remote link failures can be simulated by withdrawing the routes.
-* Control to data plane convergence will be measured by noting down the precise time of the control plane event and the data plane event. Convergence will be measured by taking the difference between contol and data plane events. Keysight IxNework web tool will create those events and provide us with the control to data plane convergence value under statistics.
+* Control to data plane convergence will be measured by noting down the precise time of the control plane event and the data plane event. Convergence will be measured by taking the difference between contol and data plane events. Traffic generator will create those events and provide us with the control to data plane convergence value under statistics.
 * RIB-IN Convergence is the time it takes to install the routes in its RIB and then in its FIB to forward the traffic without any loss. In order to measure RIB-IN convergence, initially IPv4/IPv6 routes will not be advertised. Once traffic is sent, IPv4/IPv6 routes will be advertised and the timestamp will be noted. Once the traffic received rate goes above the configured threshold value, it will note down the data plane above threshold timestamp. The difference between these two event timestamps will provide us with the RIB-IN convergence value.
 
 ## Test cases
