@@ -58,7 +58,7 @@ Following test methodologies will be used for measuring convergence.
 ### Test case # 1 – Convergence performance when remote link fails (route withdraw)
 #### Test objective
 Measure the convergence time when remote link failure event happens with in the network.
-![Single remote link failure](Usecase4_4_2.png)
+![Single link failure](Usecase4_4_2.png)
 
 #### Test steps
 * Configure IPv4 EBGP sessions between Keysight ports and the SONiC switch using IxNetwork web UI.
@@ -79,7 +79,8 @@ Measure the convergence time when remote link failure event happens with in the 
 ![Single remote link failure](Single_remote_link_failure.png)
 
 For above test case, below are the test results when multiple remote link fails.
-![Multiple remote link failure](Usecase4_4_3.png
+
+![Multiple link failure](Usecase4_4_3.png)
 
 ![Multiple remote link failure](Multiple_remote_link_failure.png)
 
