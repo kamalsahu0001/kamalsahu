@@ -47,9 +47,9 @@ IPv4 EBGP neighborship will be configured between SONiC DUT and directly connect
 ## Test Methodology
 Following test methodologies will be used for measuring convergence. 
 * Traffic generator will be used to configure ebgp peering between chassis ports and SONiC DUT by advertising IPv4/IPv6 routes. 
-* Chassis ports will be advertising the same VIP(virtual IP) addresses. 
+* Receiving ports will be advertising the same VIP(virtual IP) addresses. 
 * Data traffic will be sent from  server to these VIP addresses. 
-* Depending on the test case, the faults will be generated. Local link failures can be simulated on chassis port by "simulating link down" event. 
+* Depending on the test case, the faults will be generated. Local link failures can be simulated on the port by "simulating link down" event. 
 * Remote link failures can be simulated by withdrawing the routes.
 * Control to data plane convergence will be measured by noting down the precise time of the control plane event and the data plane event. Convergence will be measured by taking the difference between contol and data plane events. Traffic generator will create those events and provide us with the control to data plane convergence value under statistics.
 * RIB-IN Convergence is the time it takes to install the routes in its RIB and then in its FIB to forward the traffic without any loss. In order to measure RIB-IN convergence, initially IPv4/IPv6 routes will not be advertised. Once traffic is sent, IPv4/IPv6 routes will be advertised and the timestamp will be noted. Once the traffic received rate goes above the configured threshold value, it will note down the data plane above threshold timestamp. The difference between these two event timestamps will provide us with the RIB-IN convergence value.
