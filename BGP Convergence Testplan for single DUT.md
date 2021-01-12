@@ -42,7 +42,7 @@ The tests will run on following testbeds:
 ![SONiC DUT as ToR ](Usecase4_5_1.png)
 
 ## Setup configuration
-IPv4 EBGP neighborship will be configured between SONiC DUT and directly connected keysight ports. Keysight ports inturn will simulate the ToR's and Leafs by advertising IPv4/IPv6 routes.
+IPv4 EBGP neighborship will be configured between SONiC DUT and directly connected test ports. Test ports inturn will simulate the ToR's and Leafs by advertising IPv4/IPv6 routes.
 
 ## Test Methodology
 Following test methodologies will be used for measuring convergence. 
