@@ -42,17 +42,20 @@ The tests will run on following testbeds:
 ![SONiC DUT as ToR ](Usecase4_5_1.png)
 
 ## Setup configuration
-IPv4 EBGP neighborship will be configured between SONiC DUT and directly connected test ports. Test ports inturn will simulate the ToR's and Leafs by advertising IPv4/IPv6 routes.
+IPv4 EBGP neighborship will be configured between SONiC DUT and directly connected test ports. Test ports inturn will simulate the ToR's and Leafs by advertising IPv4/IPv6, dual-stack routes.
 
 ## Test Methodology
 Following test methodologies will be used for measuring convergence. 
-* Traffic generator will be used to configure ebgp peering between chassis ports and SONiC DUT by advertising IPv4/IPv6 routes. 
+* Traffic generator will be used to configure ebgp peering between chassis ports and SONiC DUT by advertising IPv4/IPv6, dual-stack routes. 
 * Receiving ports will be advertising the same VIP(virtual IP) addresses. 
 * Data traffic will be sent from  server to these VIP addresses. 
 * Depending on the test case, the faults will be generated. Local link failures can be simulated on the port by "simulating link down" event. 
 * Remote link failures can be simulated by withdrawing the routes.
 * Control to data plane convergence will be measured by noting down the precise time of the control plane event and the data plane event. Convergence will be measured by taking the difference between contol and data plane events. Traffic generator will create those events and provide us with the control to data plane convergence value under statistics.
 * RIB-IN Convergence is the time it takes to install the routes in its RIB and then in its FIB to forward the traffic without any loss. In order to measure RIB-IN convergence, initially IPv4/IPv6 routes will not be advertised. Once traffic is sent, IPv4/IPv6 routes will be advertised and the timestamp will be noted. Once the traffic received rate goes above the configured threshold value, it will note down the data plane above threshold timestamp. The difference between these two event timestamps will provide us with the RIB-IN convergence value.
+* Route capacity can be measured by advertising routes in a linear search fashion. By doing this we can figure out the maximum routes a switch can learn and install in its RIB and then in its FIB to forward traffic without any loss.
+
+![Convergence graph](Convergence_graph.png)
 
 ## Test cases
 ### Test case # 1 – Convergence performance when remote link fails (route withdraw)
