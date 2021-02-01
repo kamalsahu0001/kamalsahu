@@ -55,13 +55,11 @@ Following test methodologies will be used for measuring convergence.
 * RIB-IN Convergence is the time it takes to install the routes in its RIB and then in its FIB to forward the traffic without any loss. In order to measure RIB-IN convergence, initially IPv4/IPv6 routes will not be advertised. Once traffic is sent, IPv4/IPv6 routes will be advertised and the timestamp will be noted. Once the traffic received rate goes above the configured threshold value, it will note down the data plane above threshold timestamp. The difference between these two event timestamps will provide us with the RIB-IN convergence value.
 * Route capacity can be measured by advertising routes in a linear search fashion. By doing this we can figure out the maximum routes a switch can learn and install in its RIB and then in its FIB to forward traffic without any loss.
 
-![Convergence graph](Convergence_graph.png)
-
 ## Test cases
 ### Test case # 1 – Convergence performance when remote link fails (route withdraw)
 #### Test objective
 Measure the convergence time when remote link failure event happens with in the network.
-![Single link failure](Usecase4_4_2.png)
+![Single link failure](Usecase4_4_2.png)          ![Convergence graph](Convergence_graph.png)
 
 #### Test steps
 * Configure IPv4 EBGP sessions between Keysight ports and the SONiC switch using IxNetwork web UI.
