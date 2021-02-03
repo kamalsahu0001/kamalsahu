@@ -62,7 +62,7 @@ Measure the convergence time when remote link failure event happens with in the 
 
 <p float="left">
   <img src="/Single_link_failure.png" width="500"  />
-  <img src="/Failover_convergence.png" width="400" /> 
+  <img src="/Failover_convergence.png" width="380" /> 
 </p>
 
 
@@ -96,7 +96,7 @@ Measure the convergence time to install the routes in its RIB and then in its FI
 
 <p float="left">
   <img src="/Switch_as_ToR.png" width="500" />
-  <img src="/RIB-IN_convergence_graph.png" width="400" /> 
+  <img src="/RIB-IN_convergence_graph.png" width="380" /> 
 </p>
 
 #### Test steps
