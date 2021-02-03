@@ -61,15 +61,15 @@ Following test methodologies will be used for measuring convergence.
 Measure the convergence time when remote link failure event happens with in the network.
 
 <p float="left">
-  <img src="/Usecase4_4_2.png" width="500" />
+  <img src="/Single_link_failure.png" width="500" />
   <img src="/Convergence_graph.png" width="500" /> 
 </p>
 
 
 #### Test steps
-* Configure IPv4 EBGP sessions between Keysight ports and the SONiC switch using IxNetwork web UI.
+* Configure IPv4 EBGP sessions between Keysight ports and the SONiC switch.
 * Advertise IPv4 routes along with AS number via configured IPv4 BGP sessions.
-* Configure and advertise same IPv4 routes from both the Keysight ports.
+* Configure and advertise same IPv4 routes from both the test ports.
 * Configure another IPv4 session to send the traffic. This is the server port from which traffic will be sent to the VIP addresses.
 * Start all protocols and verify that IPv4 BGP neighborship is established.
 * Create a data traffic between the server port and receiver ports where the same VIP addresses are configured and enable tracking by "Destination Endpoint" and by "Destination session description".
@@ -86,7 +86,7 @@ Measure the convergence time when remote link failure event happens with in the 
 
 For above test case, below are the test results when multiple remote link fails.
 
-![Multiple link failure](Usecase4_4_3.png)
+![Multiple link failure](Multi_link_failure.png)
 
 ![Multiple remote link failure](Multiple_remote_link_failure.png)
 
