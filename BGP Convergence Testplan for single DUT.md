@@ -61,7 +61,7 @@ Following test methodologies will be used for measuring convergence.
 Measure the convergence time when remote link failure event happens with in the network.
 
 <p float="left">
-  <img src="/Single_link_failure.png" width="500"  />
+  <img src="/Single_link_failure.png" width="500"  hspace="50"/>
   <img src="/Failover_convergence.png" width="380" /> 
 </p>
 
