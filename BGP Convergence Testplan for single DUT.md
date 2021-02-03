@@ -35,11 +35,11 @@ The tests will run on following testbeds:
 ## Topology
 ### SONiC switch as ToR
 
-![SONiC DUT as ToR ](Usecase4_4_1.png)
+![SONiC DUT as ToR ](Switch_as_ToR.png)
 
 ### SONiC switch as Leaf
 
-![SONiC DUT as ToR ](Usecase4_5_1.png)
+![SONiC DUT as ToR ](Switch_as_Leaf.png)
 
 ## Setup configuration
 IPv4 EBGP neighborship will be configured between SONiC DUT and directly connected test ports. Test ports inturn will simulate the ToR's and Leafs by advertising IPv4/IPv6, dual-stack routes.
@@ -62,7 +62,7 @@ Measure the convergence time when remote link failure event happens with in the 
 
 <p float="left">
   <img src="/Single_link_failure.png" width="500" />
-  <img src="/Convergence_graph.png" width="500" /> 
+  <img src="/Failover_convergence.png" width="500" /> 
 </p>
 
 
@@ -93,6 +93,12 @@ For above test case, below are the test results when multiple remote link fails.
 ### Test case # 2 – RIB-IN Convergence 
 #### Test objective
 Measure the convergence time to install the routes in its RIB and then in its FIB to forward the packets after the routes are advertised.
+
+<p float="left">
+  <img src="/Multi_link_failure.png" width="500" />
+  <img src="/RIB-IN_convergence_graph.png" width="500" /> 
+</p>
+
 #### Test steps
 * Configure IPv4 EBGP sessions between Keysight ports and the SONiC switch using IxNetwork web UI.
 * Configure IPv4 routes via configured IPv4 BGP sessions. Initially disable the routes so that they don't get advertised after starting the protocols.
