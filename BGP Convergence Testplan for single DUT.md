@@ -39,7 +39,7 @@ The tests will run on following testbeds:
 
 ### SONiC switch as Leaf
 
-![SONiC DUT as ToR ](Switch_as_Leaf.png)
+![SONiC DUT as ToR ](Switch_acting_as_Leaf.png)
 
 ## Setup configuration
 IPv4 EBGP neighborship will be configured between SONiC DUT and directly connected test ports. Test ports inturn will simulate the ToR's and Leafs by advertising IPv4/IPv6, dual-stack routes.
