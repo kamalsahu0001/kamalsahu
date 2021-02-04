@@ -19,6 +19,8 @@
       - [Test steps](#Test-steps-1)
       - [Test results](#Test-results-1)
     - [Call for action](#Call-for-action)
+## Introduction
+The corresponding PR assosciated with this testplan is [PR 2926](https://github.com/Azure/sonic-mgmt/pull/2926)
 
 ## Overview
 The purpose of these tests is to test the overall convergence of a data center network by simulating multiple newtork devices such as ToR/Leafs and using SONiC switch DUT as one of the ToR/Leaf, closely resembling production environment.
